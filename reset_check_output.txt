@@ -1,0 +1,56 @@
+﻿=== CHECK 1: HEALTH ===
+---HEALTH_ERR---
+Unable to connect to the remote server
+
+=== CHECK 2: FORGOT-PASSWORD POST ===
+---FORGOT_ERR---
+Unable to connect to the remote server
+
+=== CHECK 3: SMTP VERIFY (node) ===
+Γùç injected env (11) from backend\.env // tip: Γîÿ enable debugging { debug: true }
+node : ---SMTP_ERR---
+At line:1 char:1
++ node -e "require('dotenv').config({path:'backend/.env'}); const nodem ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (---SMTP_ERR---:String) [], Remote 
+   Exception
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+self-signed certificate in certificate chain
+done
+
+=== CHECK 4: PORT LISTENERS ===
+
+=== CHECK 5: HEALTH (verbose error) ===
+---HEALTH_ERR---
+
+
+Status         : ConnectFailure
+Response       : 
+Message        : Unable to connect to the remote server
+Data           : {}
+InnerException : System.Net.Sockets.SocketException (0x80004005): No 
+                 connection could be made because the target machine actively 
+                 refused it 127.0.0.1:3000
+                    at 
+                 System.Net.Sockets.Socket.InternalEndConnect(IAsyncResult 
+                 asyncResult)
+                    at System.Net.Sockets.Socket.EndConnect(IAsyncResult 
+                 asyncResult)
+                    at System.Net.ServicePoint.ConnectSocketInternal(Boolean 
+                 connectFailure, Socket s4, Socket s6, Socket& socket, 
+                 IPAddress& address, ConnectSocketState state, IAsyncResult 
+                 asyncResult, Exception& exception)
+TargetSite     : System.Net.WebResponse GetResponse(System.Net.WebRequest)
+StackTrace     :    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResp
+                 onse(WebRequest request)
+                    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.Process
+                 Record()
+HelpLink       : 
+Source         : Microsoft.PowerShell.Commands.Utility
+HResult        : -2146233079
+
+
+
+
+done

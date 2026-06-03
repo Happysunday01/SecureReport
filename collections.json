@@ -1,0 +1,209 @@
+[
+  {
+    "id": "users_custom_fields",
+    "name": "users",
+    "type": "auth",
+    "fields": [
+      {
+        "id": "role_field",
+        "name": "role",
+        "type": "select",
+        "required": true,
+        "options": {
+          "values": ["student", "security", "coordinator", "admin"],
+          "maxSelect": 1
+        }
+      },
+      {
+        "id": "department_field",
+        "name": "department",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "approved_field",
+        "name": "approved",
+        "type": "bool",
+        "required": false,
+        "options": {
+          "default": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "incidents_collection",
+    "name": "incidents",
+    "type": "base",
+    "fields": [
+      {
+        "id": "type_field",
+        "name": "type",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "priority_field",
+        "name": "priority",
+        "type": "select",
+        "required": false,
+        "options": {
+          "values": ["Low", "Medium", "High", "Critical"],
+          "maxSelect": 1,
+          "default": "Medium"
+        }
+      },
+      {
+        "id": "location_field",
+        "name": "location",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "datetime_field",
+        "name": "datetime",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "description_field",
+        "name": "description",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "reported_by_field",
+        "name": "reported_by",
+        "type": "relation",
+        "required": false,
+        "options": {
+          "collectionId": "_pb_users_auth_",
+          "maxSelect": 1,
+          "cascadeDelete": true
+        }
+      },
+      {
+        "id": "reported_by_name_field",
+        "name": "reported_by_name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "anonymous_field",
+        "name": "anonymous",
+        "type": "bool",
+        "required": false,
+        "options": {
+          "default": false
+        }
+      },
+      {
+        "id": "evidence_field",
+        "name": "evidence",
+        "type": "json",
+        "required": false
+      },
+      {
+        "id": "lat_field",
+        "name": "lat",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "lng_field",
+        "name": "lng",
+        "type": "number",
+        "required": false
+      },
+      {
+        "id": "status_field",
+        "name": "status",
+        "type": "select",
+        "required": false,
+        "options": {
+          "values": ["Pending", "In Progress", "Resolved"],
+          "maxSelect": 1,
+          "default": "Pending"
+        }
+      },
+      {
+        "id": "assigned_to_field",
+        "name": "assigned_to",
+        "type": "relation",
+        "required": false,
+        "options": {
+          "collectionId": "_pb_users_auth_",
+          "maxSelect": 1,
+          "cascadeDelete": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "incident_timeline_collection",
+    "name": "incident_timeline",
+    "type": "base",
+    "fields": [
+      {
+        "id": "incident_field",
+        "name": "incident",
+        "type": "relation",
+        "required": true,
+        "options": {
+          "collectionId": "incidents_collection",
+          "maxSelect": 1,
+          "cascadeDelete": true
+        }
+      },
+      {
+        "id": "date_field",
+        "name": "date",
+        "type": "date",
+        "required": false,
+        "options": {
+          "default": "@now"
+        }
+      },
+      {
+        "id": "user_name_field",
+        "name": "user_name",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "action_field",
+        "name": "action",
+        "type": "text",
+        "required": false
+      },
+      {
+        "id": "notes_field",
+        "name": "notes",
+        "type": "text",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "settings_collection",
+    "name": "settings",
+    "type": "base",
+    "fields": [
+      {
+        "id": "key_field",
+        "name": "key",
+        "type": "text",
+        "required": true,
+        "options": {
+          "unique": true
+        }
+      },
+      {
+        "id": "value_field",
+        "name": "value",
+        "type": "json",
+        "required": false
+      }
+    ]
+  }
+]
